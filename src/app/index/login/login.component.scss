@@ -1,0 +1,250 @@
+@import "~material-design-icons/iconfont/material-icons.css";
+span{
+  font-size:16px;
+}
+.example-margin{
+  font-size: 15px;
+}
+p{
+  color:red;
+  font-size:16px;
+  text-align: center;
+}
+.fadeInUp {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+}
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+    transition-delay: 10s;
+  }
+}
+@-webkit-keyframes slideInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+    transition-delay: 10s;
+  }
+}
+p{
+  margin:0;
+}
+
+h2{
+  font-family:"Syntax";
+}
+.login{
+  color:rgb(51, 49, 49);
+  font-weight: 540;
+  font-size:17px;
+  font-family: inherit;
+  cursor: pointer;
+}
+.login:hover{
+  color:orangered;
+}
+.form-control{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+  font-size: 16px;
+  height: 45px;
+  font-weight: 530;
+}
+.signIn, .register, .sendOtp, .resendOtp, .submitOtp{
+  border-radius: 5px;
+  padding:10px 20px;
+  font-size:15px;
+}
+.footer-text{
+  font-size: 17px;
+  font-family: "Syntax";
+  color:white;
+  letter-spacing: 1px;
+
+}
+.address-link{
+  font-size: 17px;
+  font-family: "Syntax" !important;
+  color:white;
+  border: 0;
+  overflow: visible;
+  padding: 3px 0;
+  font-weight: 400;
+}
+.address-link:hover{
+  font-size: 17px;
+  font-family: "Syntax" !important;
+  color:white;
+  border: 0;
+  overflow: visible;
+  padding: 3px 0;
+  background-color: transparent;
+  cursor: text;
+}
+.fa:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+  padding: 10px;
+  font-size: 20px;
+  width: 40px;
+  text-align: center;
+  text-decoration: none;
+  border-radius:35px;
+}
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+  padding: 10px;
+  font-size: 20px;
+  width: 40px;
+  text-align: center;
+  text-decoration: none;
+  border-radius:35px;
+}
+.fa-google {
+  background: #dd4b39;
+  color: white;
+  padding: 10px;
+  font-size: 20px;
+  width: 40px;
+  text-align: center;
+  text-decoration: none;
+  border-radius:35px;
+}
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+  padding: 10px;
+  font-size: 20px;
+  width: 40px;
+  text-align: center;
+  text-decoration: none;
+  border-radius:35px;
+}
+.fa-phone, .fa-envelope{
+  border-radius: 0px;
+  color:#efaf4e;
+  text-align:left ;
+  padding: 1px;
+}
+.carousel-control-prev-icon, .carousel-control-next-icon{
+  background-color: rgba(0, 0, 0, 0.3);
+  padding:18px;
+  border-radius: 50%;
+}
+.contactHeader{
+  font-size: 30px;
+  font-family: "Syntax";
+  color:rgb(46, 45, 45);
+}
+.contactsubmitButton{
+  border-radius: 3px;
+  border: 0;
+  outline: 0;
+}
+.modal-title-menu{
+  color:white;
+  font-weight: 600;
+  font-size:16px;
+}
+.modal-title-menu:hover{
+  color:white;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.forgot-text-link {
+  color: #0054b5;
+}
+.forgot-text-link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.textarea{
+  height: 100px;
+}
+.navbar-brand{
+width:80%;
+height:20%;
+}
+.layer1{
+  background: #f3ac42;
+}
+
+.location, .callNumbers, .emailSupport{
+  font-family: "Syntax";
+  font-size: 18px;
+}
+.secondlayer{
+  margin-top:-15px;
+}
+.nav-item{
+  display: inline;
+  padding:0 15px;
+  font-size:16px;
+  font-family: inherit;
+  font-weight: 540;
+  cursor: pointer;
+}
+.nav-item:hover{
+  color:orangered;
+}
+
+.carousel{
+  margin-top: -20px;
+}
+.whoweare{
+  color:rgb(32, 32, 32);
+  font-size: 18px;
+  font-family: "Syntax";
+  letter-spacing: 0.5px;
+}
+.carousel-indicators li{
+width:30px;
+height:4px;
+border:0;
+background-color:white;
+border-radius: 0;
+}
+.carousel-indicators .active{
+  background-color:orangered;
+
+}
+.carousel-caption{
+  opacity: 0;
+}
+.carousel:hover{
+  .carousel-caption{
+    opacity: 1;
+    transition: 0.3s;
+    background-color: rgba(14, 13, 13, 0.63);
+  }
+}
+.bookPandit{
+  align-content:center;
+  font-size:16px;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color:black;
+  background:#f3ac42;
+  border-radius: 5px;
+}
+

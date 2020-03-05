@@ -1,0 +1,580 @@
+
+  <div class="col-12 mx-auto">
+    <mat-tab-group>
+        <mat-tab label="All Pandit">
+            <ng-template mat-tab-label #ngt1>
+                <mat-icon>group&nbsp;</mat-icon>
+              <span>&nbsp;All Pandit</span>
+            </ng-template>
+            <br>
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="row">
+                  <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 "></div>
+                  <div class='col-xl-4 col-lg-4 col-md-5 col-sm-12 col-xs-12'>
+                    <div class="form-midline waves-light " mdbWavesEffect>
+                      <div class="md-form">
+                        <input class="form-control" [(ngModel)]="termsearch1" type="text" placeholder="Search" style="font-size:16px">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xl-4 col-lg-4 col-md-3 col-sm-12 col-xs-12"></div>
+                </div>
+              </div>
+              <div class="table-responsive col-12">
+                <table class="table table-hover " id="my-table">
+            
+                  <thead>
+                    <tr>
+                      <th colspan="2">Pandit ID</th>
+                      <th colspan="2">First Name</th>
+                      <th colspan="2">Image</th>
+                      <th colspan="2">Mobile</th>
+                      <th colspan="2">Email</th>
+                      <th colspan="2">Region</th>
+                      <th colspan="2">Specialization</th>
+                      <th colspan="2">Location</th>
+                    </tr>
+                  </thead>
+                
+                  <tbody>
+            
+                    <tr *ngFor="let a of result | filter:termsearch1" (click)="navigatoToDetails(a)" title="click to see pandit details">
+                      <td colspan="2">{{a.pandit_id}}</td>
+                      <td colspan="2">{{a.fname}}</td>
+                      <td colspan="2" *ngIf="a.idproofurl"><img style="width:50px;height:50px" class="pandit-image img-responsive" src="http://115.112.122.99:3040/api/images/{{a.idproofurl}}"></td>
+                      <td colspan="2" *ngIf="!a.idproofurl"><img style="width:50px;height:50px" class="pandit-image img-responsive" src="./assets/usericon.png"></td>
+                      <td colspan="2">{{a.mobile}}</td>
+                      <td colspan="2">{{a.email}}</td>
+                      <td colspan="2">{{a.region}}</td>
+                      <td colspan="2">{{a.specialization}}</td>
+                      <td colspan="2">{{a.location}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="col-6 text-center mx-auto" *ngIf="loading">
+                    <div class="col-4 mx-auto">
+                      <div class="lds-css ng-scope">
+                        <div class="lds-spinner" style="width:100%;height:100%">
+                          <div></div>
+                          <div></div>
+                          <div></div>
+                          <div></div>
+                          <div></div>
+                          <div></div>
+                          <div></div>
+                          <div></div>
+                          <div></div>
+                          <div></div>
+                        </div>
+                        <style type="text/css">
+                          @keyframes lds-spinner {
+                            0% {
+                              opacity: 1;
+                            }
+            
+                            100% {
+                              opacity: 0;
+                            }
+                          }
+            
+                          @-webkit-keyframes lds-spinner {
+                            0% {
+                              opacity: 1;
+                            }
+            
+                            100% {
+                              opacity: 0;
+                            }
+                          }
+            
+                          .lds-spinner {
+                            position: relative;
+                          }
+            
+                          .lds-spinner div {
+                            top: 45px;
+                            position: absolute;
+                            -webkit-animation: lds-spinner linear 1.3s infinite;
+                            animation: lds-spinner linear 1.3s infinite;
+                            background: #fd6a0fea;
+                            width: 12px;
+                            height: 30px;
+                            border-radius: 40%;
+                            -webkit-transform-origin: 0px 55px;
+                            transform-origin: 0px 55px;
+                          }
+            
+                          .lds-spinner div:nth-child(1) {
+                            -webkit-transform: rotate(0deg);
+                            transform: rotate(0deg);
+                            -webkit-animation-delay: -1.17s;
+                            animation-delay: -1.17s;
+                          }
+            
+                          .lds-spinner div:nth-child(2) {
+                            -webkit-transform: rotate(36deg);
+                            transform: rotate(36deg);
+                            -webkit-animation-delay: -1.04s;
+                            animation-delay: -1.04s;
+                          }
+            
+                          .lds-spinner div:nth-child(3) {
+                            -webkit-transform: rotate(72deg);
+                            transform: rotate(72deg);
+                            -webkit-animation-delay: -0.91s;
+                            animation-delay: -0.91s;
+                          }
+            
+                          .lds-spinner div:nth-child(4) {
+                            -webkit-transform: rotate(108deg);
+                            transform: rotate(108deg);
+                            -webkit-animation-delay: -0.78s;
+                            animation-delay: -0.78s;
+                          }
+            
+                          .lds-spinner div:nth-child(5) {
+                            -webkit-transform: rotate(144deg);
+                            transform: rotate(144deg);
+                            -webkit-animation-delay: -0.65s;
+                            animation-delay: -0.65s;
+                          }
+            
+                          .lds-spinner div:nth-child(6) {
+                            -webkit-transform: rotate(180deg);
+                            transform: rotate(180deg);
+                            -webkit-animation-delay: -0.52s;
+                            animation-delay: -0.52s;
+                          }
+            
+                          .lds-spinner div:nth-child(7) {
+                            -webkit-transform: rotate(216deg);
+                            transform: rotate(216deg);
+                            -webkit-animation-delay: -0.39s;
+                            animation-delay: -0.39s;
+                          }
+            
+                          .lds-spinner div:nth-child(8) {
+                            -webkit-transform: rotate(252deg);
+                            transform: rotate(252deg);
+                            -webkit-animation-delay: -0.26s;
+                            animation-delay: -0.26s;
+                          }
+            
+                          .lds-spinner div:nth-child(9) {
+                            -webkit-transform: rotate(288deg);
+                            transform: rotate(288deg);
+                            -webkit-animation-delay: -0.13s;
+                            animation-delay: -0.13s;
+                          }
+            
+                          .lds-spinner div:nth-child(10) {
+                            -webkit-transform: rotate(324deg);
+                            transform: rotate(324deg);
+                            -webkit-animation-delay: 0s;
+                            animation-delay: 0s;
+                          }
+            
+                          .lds-spinner {
+                            width: 200px !important;
+                            height: 200px !important;
+                            -webkit-transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+                            transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+                          }
+                        </style>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              <div class="row container">
+            
+            
+              </div>
+          </mat-tab>
+      <mat-tab label="Verify Pandit">
+        <ng-template mat-tab-label #ngt1>
+          <mat-icon>verified_user&nbsp;</mat-icon>
+          <span>&nbsp;Verified Pandit</span>
+        </ng-template>
+        <br>
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-xs-12 float-right ">
+            <div class="row">
+              <div class='col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12'>
+                <div class="form-midline waves-light " mdbWavesEffect>
+                  <div class="md-form">
+                    <input class="form-control" [(ngModel)]="termsearch2" type="text" placeholder="Search" style="font-size:16px">
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12" style="font-size:16px;">
+                <!-- <pagination-controls (pageChange)="pp = $event" id="table2"></pagination-controls> -->
+              </div>
+            </div>
+          </div>
+        <div class="table-responsive col-12">
+          <table class="table table-hover" id="table-verified-pandits">
+            <thead>
+              <th>Pandit ID</th>
+              <th>First Name</th>
+              <th>Image</th>
+              <th>Mobile</th>
+              <th>Email</th>
+              <th>Region</th>
+              <th>Specialization</th>
+              <th>Location</th>
+
+            </thead>
+            
+            <tbody>
+            <tr *ngFor="let a of result | filter:termsearch2" (click)="navigatoToDetails(a)" title="click to see pandit details">
+              <td *ngIf="a.isVerified">{{a.pandit_id}}</td>
+              <td *ngIf="a.isVerified">{{a.fname}}</td>    
+              <td *ngIf="a.isVerified && a.idproofurl">
+                <div>
+                  <img style="width:50px;height:50px"class="pandit-image img-responsive" src="http://115.112.122.99:3040/api/images/{{a.idproofurl}}">
+                </div>
+              </td>
+              <td *ngIf="a.isVerified && !a.idproofurl">
+                <div>
+                  <img style="width:50px;height:50px" class="pandit-image img-responsive" src="./assets/usericon.png">
+                </div>
+              </td>
+              <td *ngIf="a.isVerified">{{a.mobile}}</td>
+              <td *ngIf="a.isVerified">{{a.email}}</td>
+              <td *ngIf="a.isVerified">{{a.region}}</td>
+              <td *ngIf="a.isVerified">{{a.specialization}}</td>
+              <td *ngIf="a.isVerified">{{a.location}}</td>
+
+            </tr>
+          </tbody>
+          </table>
+          <div class="col-6 text-center mx-auto" *ngIf="loading">
+              <div class="col-4 mx-auto">
+                <div class="lds-css ng-scope">
+                  <div class="lds-spinner" style="width:100%;height:100%">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                  <style type="text/css">
+                    @keyframes lds-spinner {
+                      0% {
+                        opacity: 1;
+                      }
+
+                      100% {
+                        opacity: 0;
+                      }
+                    }
+
+                    @-webkit-keyframes lds-spinner {
+                      0% {
+                        opacity: 1;
+                      }
+
+                      100% {
+                        opacity: 0;
+                      }
+                    }
+
+                    .lds-spinner {
+                      position: relative;
+                    }
+
+                    .lds-spinner div {
+                      top: 45px;
+                      position: absolute;
+                      -webkit-animation: lds-spinner linear 1.3s infinite;
+                      animation: lds-spinner linear 1.3s infinite;
+                      background: #fd6a0fea;
+                      width: 12px;
+                      height: 30px;
+                      border-radius: 40%;
+                      -webkit-transform-origin: 0px 55px;
+                      transform-origin: 0px 55px;
+                    }
+
+                    .lds-spinner div:nth-child(1) {
+                      -webkit-transform: rotate(0deg);
+                      transform: rotate(0deg);
+                      -webkit-animation-delay: -1.17s;
+                      animation-delay: -1.17s;
+                    }
+
+                    .lds-spinner div:nth-child(2) {
+                      -webkit-transform: rotate(36deg);
+                      transform: rotate(36deg);
+                      -webkit-animation-delay: -1.04s;
+                      animation-delay: -1.04s;
+                    }
+
+                    .lds-spinner div:nth-child(3) {
+                      -webkit-transform: rotate(72deg);
+                      transform: rotate(72deg);
+                      -webkit-animation-delay: -0.91s;
+                      animation-delay: -0.91s;
+                    }
+
+                    .lds-spinner div:nth-child(4) {
+                      -webkit-transform: rotate(108deg);
+                      transform: rotate(108deg);
+                      -webkit-animation-delay: -0.78s;
+                      animation-delay: -0.78s;
+                    }
+
+                    .lds-spinner div:nth-child(5) {
+                      -webkit-transform: rotate(144deg);
+                      transform: rotate(144deg);
+                      -webkit-animation-delay: -0.65s;
+                      animation-delay: -0.65s;
+                    }
+
+                    .lds-spinner div:nth-child(6) {
+                      -webkit-transform: rotate(180deg);
+                      transform: rotate(180deg);
+                      -webkit-animation-delay: -0.52s;
+                      animation-delay: -0.52s;
+                    }
+
+                    .lds-spinner div:nth-child(7) {
+                      -webkit-transform: rotate(216deg);
+                      transform: rotate(216deg);
+                      -webkit-animation-delay: -0.39s;
+                      animation-delay: -0.39s;
+                    }
+
+                    .lds-spinner div:nth-child(8) {
+                      -webkit-transform: rotate(252deg);
+                      transform: rotate(252deg);
+                      -webkit-animation-delay: -0.26s;
+                      animation-delay: -0.26s;
+                    }
+
+                    .lds-spinner div:nth-child(9) {
+                      -webkit-transform: rotate(288deg);
+                      transform: rotate(288deg);
+                      -webkit-animation-delay: -0.13s;
+                      animation-delay: -0.13s;
+                    }
+
+                    .lds-spinner div:nth-child(10) {
+                      -webkit-transform: rotate(324deg);
+                      transform: rotate(324deg);
+                      -webkit-animation-delay: 0s;
+                      animation-delay: 0s;
+                    }
+
+                    .lds-spinner {
+                      width: 200px !important;
+                      height: 200px !important;
+                      -webkit-transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+                      transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+                    }
+                  </style>
+                </div>
+              </div>
+            </div>
+        </div>
+        <br>
+      </mat-tab>
+      <mat-tab label="Unverified Pandit">
+        <ng-template mat-tab-label #ngt2>
+          <mat-icon>cancel&nbsp;</mat-icon>
+          <span>&nbsp;Unverified Pandit</span>
+        </ng-template>
+        <br>
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-xs-12 float-right ">
+            <div class="row">
+          
+              <div class='col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12'>
+                <div class="form-midline waves-light " mdbWavesEffect>
+                  <div class="md-form">
+                    <input class="form-control" [(ngModel)]="termsearch3" type="text" placeholder="Search" style="font-size:16px">
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 " style="font-size:16px;">
+                <!-- <pagination-controls (pageChange)="ppp = $event" id="table3"></pagination-controls> -->
+              </div>
+            </div>
+          </div>
+        <div class="table-responsive">
+          <table class="table table-hover" id="table-unverified-pandits">
+
+            <thead>
+              <th>Pandit ID</th>
+              <th>First Name</th>
+              <th>Image</th>
+              <th>Mobile</th>
+              <th>Email</th>
+              <th>Region</th>
+              <th>Specialization</th>
+              <th>Location</th>
+            </thead>
+           
+          <tbody>
+            <tr *ngFor="let a of result | filter:termsearch3 " (click)="navigatoToDetails(a)" title="click to see pandit details">
+              <td *ngIf="!a.isVerified">{{a.pandit_id}}</td>
+              <td *ngIf="!a.isVerified">{{a.fname}}</td>
+              <td *ngIf="a.idproofurl && !a.isVerified">
+                  <div>
+                    <img style="width:50px;height:50px"class="pandit-image img-fluid img-responsive" src="http://115.112.122.99:3040/api/images/{{a.idproofurl}}">
+                  </div>
+                </td>
+                <td *ngIf="!a.idproofurl && !a.isVerified">
+                  <div>
+                    <img style="width:50px;height:50px" class="pandit-image img-fluid img-responsive" src="./assets/usericon.png">
+                  </div>
+                </td>
+              <td *ngIf="!a.isVerified">{{a.mobile}}</td>
+              <td *ngIf="!a.isVerified">{{a.email}}</td>
+              <td *ngIf="!a.isVerified">{{a.region}}</td>
+              <td *ngIf="!a.isVerified">{{a.specialization}}</td>
+              <td *ngIf="!a.isVerified">{{a.location}}</td>
+            </tr>
+            </tbody>
+          </table>
+          <div class="col-6 text-center mx-auto"  *ngIf="loading">
+              <div class="col-4 mx-auto">
+                <div class="lds-css ng-scope">
+                  <div class="lds-spinner" style="width:100%;height:100%">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                  <style type="text/css">
+                    @keyframes lds-spinner {
+                      0% {
+                        opacity: 1;
+                      }
+
+                      100% {
+                        opacity: 0;
+                      }
+                    }
+
+                    @-webkit-keyframes lds-spinner {
+                      0% {
+                        opacity: 1;
+                      }
+
+                      100% {
+                        opacity: 0;
+                      }
+                    }
+
+                    .lds-spinner {
+                      position: relative;
+                    }
+
+                    .lds-spinner div {
+                      top: 45px;
+                      position: absolute;
+                      -webkit-animation: lds-spinner linear 1.3s infinite;
+                      animation: lds-spinner linear 1.3s infinite;
+                      background: #fd6a0fea;
+                      width: 12px;
+                      height: 30px;
+                      border-radius: 40%;
+                      -webkit-transform-origin: 0px 55px;
+                      transform-origin: 0px 55px;
+                    }
+
+                    .lds-spinner div:nth-child(1) {
+                      -webkit-transform: rotate(0deg);
+                      transform: rotate(0deg);
+                      -webkit-animation-delay: -1.17s;
+                      animation-delay: -1.17s;
+                    }
+
+                    .lds-spinner div:nth-child(2) {
+                      -webkit-transform: rotate(36deg);
+                      transform: rotate(36deg);
+                      -webkit-animation-delay: -1.04s;
+                      animation-delay: -1.04s;
+                    }
+
+                    .lds-spinner div:nth-child(3) {
+                      -webkit-transform: rotate(72deg);
+                      transform: rotate(72deg);
+                      -webkit-animation-delay: -0.91s;
+                      animation-delay: -0.91s;
+                    }
+
+                    .lds-spinner div:nth-child(4) {
+                      -webkit-transform: rotate(108deg);
+                      transform: rotate(108deg);
+                      -webkit-animation-delay: -0.78s;
+                      animation-delay: -0.78s;
+                    }
+
+                    .lds-spinner div:nth-child(5) {
+                      -webkit-transform: rotate(144deg);
+                      transform: rotate(144deg);
+                      -webkit-animation-delay: -0.65s;
+                      animation-delay: -0.65s;
+                    }
+
+                    .lds-spinner div:nth-child(6) {
+                      -webkit-transform: rotate(180deg);
+                      transform: rotate(180deg);
+                      -webkit-animation-delay: -0.52s;
+                      animation-delay: -0.52s;
+                    }
+
+                    .lds-spinner div:nth-child(7) {
+                      -webkit-transform: rotate(216deg);
+                      transform: rotate(216deg);
+                      -webkit-animation-delay: -0.39s;
+                      animation-delay: -0.39s;
+                    }
+
+                    .lds-spinner div:nth-child(8) {
+                      -webkit-transform: rotate(252deg);
+                      transform: rotate(252deg);
+                      -webkit-animation-delay: -0.26s;
+                      animation-delay: -0.26s;
+                    }
+
+                    .lds-spinner div:nth-child(9) {
+                      -webkit-transform: rotate(288deg);
+                      transform: rotate(288deg);
+                      -webkit-animation-delay: -0.13s;
+                      animation-delay: -0.13s;
+                    }
+
+                    .lds-spinner div:nth-child(10) {
+                      -webkit-transform: rotate(324deg);
+                      transform: rotate(324deg);
+                      -webkit-animation-delay: 0s;
+                      animation-delay: 0s;
+                    }
+
+                    .lds-spinner {
+                      width: 200px !important;
+                      height: 200px !important;
+                      -webkit-transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+                      transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+                    }
+                  </style>
+                </div>
+              </div>
+            </div>
+        </div>
+
+      </mat-tab>
+    </mat-tab-group>
+  </div>

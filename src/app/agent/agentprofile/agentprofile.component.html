@@ -1,0 +1,404 @@
+<div class="modal mx-auto" id="exampleModalCenter2" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title col-11 text-center">Update Details</h1>
+        <span class="close" data-dismiss="modal" aria-label="Close" style="color:orangered;" (click)="f.reset();">&times;</span>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="f" >
+          <div class="col-12 form-group">
+            <div class="form-group">
+              <label>Cost</label>
+              <input name="cost" formControlName="cost" class="form" placeholder="Cost" type="text" autocomplete="off"
+                [ngClass]="{ 'is-invalid': submitted && formadd.get('cost').errors}">
+              <div *ngIf="(submitted && formadd.get('cost').errors) || formadd.get('cost').touched"
+                class="invalid-feedback">
+                <p *ngIf="formadd.get('cost').errors.required">Number is required</p>
+                <p *ngIf="formadd.get('cost').errors.pattern">This is a Invalid input</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Duration</label>
+              <input name="duration" formControlName="duration" class="form" placeholder="Duration in hours" type="text"
+                autocomplete="off" [ngClass]="{ 'is-invalid': submitted &&formadd.get('duration').errors}">
+              <div *ngIf="(submitted && formadd.get('duration').errors) || formadd.get('duration').touched"
+                class="invalid-feedback">
+                <p *ngIf="formadd.get('duration').errors.required">Number is required</p>
+                <p *ngIf="formadd.get('duration').errors.pattern">Minimum 1 hour, Maximum 9-9-9 hours only</p>
+              </div>
+            </div>
+            <div [hidden]="true" class="form-group">
+              <input name="duration" formControlName="service_id" class="form-control"type="text">
+            </div>
+            <div class="form-group">
+              <label>Description</label>
+              <textarea name="description" formControlName="description" class="form" autocomplete="off"
+                placeholder="Description"
+                [ngClass]="{ 'is-invalid': submitted && formadd.get('description').errors}"></textarea>
+              <div *ngIf="(submitted && formadd.get('description').errors) || formadd.get('description').touched"
+                class="invalid-feedback">
+                <p *ngIf="formadd.get('description').errors.required">Tell me something about your Pooja</p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>No of Pandits</label>
+              <input name="noofpandits" formControlName="noofpandits" class="form" placeholder="No Of Pandits"
+                type="text" autocomplete="off"
+                [ngClass]="{ 'is-invalid':submitted && formadd.get('noofpandits').errors}">
+              <!-- <p>{{formadd.touched}}</p> -->
+              <div *ngIf="(submitted && formadd.get('noofpandits').errors) || formadd.get('noofpandits').touched"
+                class="invalid-feedback">
+                <p *ngIf="formadd.get('noofpandits').errors.required">Number is required</p>
+                <p *ngIf="formadd.get('noofpandits').errors.pattern">Minimum 1 hour, Maximum 9-9-9 pandits can be booked
+                </p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Pooja Category</label>
+              <select class="form" formControlName="category_id"
+                [ngClass]="{ 'is-invalid': submitted && formadd.get('category_id').errors}">
+                <option disabled> Choose your Pooja Category</option>
+                <option *ngFor="let a of result" [ngValue]="a.category_id">{{a.catname}}</option>
+              </select>
+              <div *ngIf="submitted && formadd.get('category_id').errors">
+                <p *ngIf="submitted && formadd.get('category_id').errors.required" style="color:red;font-size:15px;">
+                  Category is required</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Samagri</label>
+              <textarea name="samagri" formControlName="samagri" class="form" placeholder="Pooja Samagri" type="text"
+                autocomplete="off" [ngClass]="{ 'is-invalid': submitted && formadd.get('samagri').errors}"></textarea>
+              <div *ngIf="(submitted && formadd.get('samagri').errors) || formadd.get('samagri').touched"
+                class="invalid-feedback">
+                <p *ngIf="formadd.get('samagri').errors.required">Tell me what samagri is needed</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 text-center">
+            <button type="submit"class="btnSave" mdbBtn mdbWavesEffect name="submit" [disabled]="f.invalid" (click)="actup(f.value)" data-dismiss="modal">Save changes</button>
+            <button class="btnDelete" mdbBtn mdbWavesEffect (click)="del(f.value)" data-dismiss="modal">delete</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa sliding in first-->
+<!-- Modal -->
+
+<div class="modal modal-fade scrollable" id="modaladd" tabindex="-1" role="dialog" aria-labelledby="modaladd" aria-hidden="true">
+  <!-- Add .modal-dialog-centered to .modal-dialog to vertically center the modal -->
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title col-11 text-center">&nbsp;Add Service</h1>
+        <span class="close" data-dismiss="modal" aria-label="Close" style="color:orangered;" aria-hidden="true"(click)="rest()">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div class="col-10 mx-auto">
+          <br>
+          <form [formGroup]="formadd">
+            <div class="col-xs-12 form-group">
+              <div class="form-group">
+                <label>Choose your Pooja Category</label>
+                <select class="form" formControlName="category_id"
+                  [ngClass]="{ 'is-invalid': submitted && formadd.get('category_id').errors}">
+                  <option disabled> Choose your Pooja Category</option>
+                  <option *ngFor="let a of result" [ngValue]="a.category_id">{{a.catname}}</option>
+                </select>
+                <div *ngIf="submitted && formadd.get('category_id').errors">
+                  <p *ngIf="submitted && formadd.get('category_id').errors.required" style="color:red;font-size:15px;">
+                    Category is required</p>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>No Of Pandits</label>
+                <input name="noofpandits" formControlName="noofpandits" class="form-control" placeholder="No Of Pandits"
+                  type="text" autocomplete="off"
+                  [ngClass]="{ 'is-invalid':submitted && formadd.get('noofpandits').errors}">
+                <!-- <p>{{formadd.touched}}</p> -->
+                <div *ngIf="(submitted && formadd.get('noofpandits').errors) || formadd.get('noofpandits').touched"
+                  class="invalid-feedback">
+                  <p *ngIf="formadd.get('noofpandits').errors.required">Number is required</p>
+                  <p *ngIf="formadd.get('noofpandits').errors.pattern">Minimum 1 hour, Maximum 9-9-9 pandits can be
+                    booked</p>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Duration in hours</label>
+                <input name="duration" formControlName="duration" class="form-control" placeholder="Duration in hours"
+                  type="text" autocomplete="off"
+                  [ngClass]="{ 'is-invalid': submitted &&formadd.get('duration').errors}">
+                <div *ngIf="(submitted && formadd.get('duration').errors) || formadd.get('duration').touched"
+                  class="invalid-feedback">
+                  <p *ngIf="formadd.get('duration').errors.required">Number is required</p>
+                  <p *ngIf="formadd.get('duration').errors.pattern">Minimum 1 hour, Maximum 9-9-9 hours only</p>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Cost</label>
+                <input name="cost" formControlName="cost" class="form-control" placeholder="Cost" type="text"
+                  autocomplete="off" [ngClass]="{ 'is-invalid': submitted && formadd.get('cost').errors}">
+                <div *ngIf="(submitted && formadd.get('cost').errors) || formadd.get('cost').touched"
+                  class="invalid-feedback">
+                  <p *ngIf="formadd.get('cost').errors.required">Number is required</p>
+                  <p *ngIf="formadd.get('cost').errors.pattern">This is a Invalid input</p>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Pooja Samagri</label>
+                <input name="samagri" formControlName="samagri" class="form-control" placeholder="Pooja Samagri"
+                  type="text" autocomplete="off"
+                  [ngClass]="{ 'is-invalid': submitted && formadd.get('samagri').errors}">
+                <div *ngIf="(submitted && formadd.get('samagri').errors) || formadd.get('samagri').touched"
+                  class="invalid-feedback">
+                  <p *ngIf="formadd.get('samagri').errors.required">Tell me what samagri is needed</p>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Description</label>
+                <textarea name="description" formControlName="description" class="form-control" autocomplete="off"
+                  placeholder="Description"
+                  [ngClass]="{ 'is-invalid': submitted && formadd.get('description').errors}"></textarea>
+                <div *ngIf="(submitted && formadd.get('description').errors) || formadd.get('description').touched"
+                  class="invalid-feedback">
+                  <p *ngIf="formadd.get('description').errors.required">Tell me something about your Pooja</p>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="col-4 mx-auto">
+              <button type="submit" mdbBtn class="button-main waves-light" style="padding:10px 20px;font-size:16px;" (click)="act(formadd.value)"
+                mdbWavesEffect><i class="fa fa-plus"></i>&nbsp;Add</button>
+            </div>
+          </form> 
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal modal-fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle1">Samagri</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true"style="color:orangered">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+         <td class="samagri">{{samagriList}}</td>
+        </div>
+      </div>
+    </div>
+  </div>
+<div>
+  <div class="row">
+    <div class="col-xl-4 col-lg-4 col-md-2 col-sm-12 col-xs-12 "></div>
+    <div class='col-xl-4 col-lg-4 col-md-5 col-sm-12 col-xs-12'>
+      <div class="form-midline waves-light ">
+        <div class="md-form">
+          <input class="form-control-search" name="term" [(ngModel)]="term" type="text" placeholder="Search">
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-lg-4 col-md-5 col-sm-12 col-xs-12 text-right">
+        <button title="Download PDF" (click)="downloadpdf()" mdbBtn class="waves-light pdf" mdbWavesEffect><i class="fa fa-download fa-3x"></i></button>
+        <button title="Add Service" data-toggle="modal" data-target="#modaladd" mdbBtn class="waves-light pdf" mdbWavesEffect ><i class="fa fa-plus fa-3x"></i></button>  
+    </div>
+
+
+  </div>
+  <div class="table-responsive col-12">
+    <table class="table table-hover" id="my-table">
+      <thead>
+        <tr>
+          <th scope="col">Service_ID</th>
+          <th scope="col">Category_ID</th>
+          <th scope="col">Pandits</th>
+          <th scope="col">Cost</th>
+          <th scope="col">Duration</th>
+          <th scope="col">Description</th>
+          <th scope="col">Samagri</th>
+          <th scope="col">Edit</th>
+
+        </tr>
+      </thead>
+      
+      <tbody>
+        <tr *ngFor="let a of res | filter:term | paginate: { itemsPerPage: page, currentPage: p, id:'table2' }">
+          <td scope="row">{{a.service_id}}</td>
+          <td scope="row">{{a.category_id}}</td>
+          <td scope="row">{{a.noofpandits}}</td>
+          <td scope="row">{{a.cost}}</td>
+          <td scope="row">{{a.duration}}</td>
+          <td scope="row">{{a.description}}</td>
+          <td><button (click)="samagriData(a.samagri)" data-toggle="modal" data-target="#exampleModalCenter1" (click)="samagriData(a.samagri)" class="view btn btn-link text-lowercase">View</button></td>
+          <td><button (click)="funs(a)" data-toggle="modal" data-target="#exampleModalCenter2" class="pt-2 pb-2 edit btn btn-primary"title="click to see edit service details">Edit</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="row">
+        <div class="col-xl-6 col-lg-6 hidden-12 hidden-12 hidden-12"></div>
+        <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-xs-12 mx-auto" >
+            <mat-form-field class="float-right">
+              <mat-label>Items per Page</mat-label>
+              <mat-select matNativeControl [(ngModel)]="page">
+                <mat-option value="10">10</mat-option>
+                <mat-option value="20">20</mat-option>
+                <mat-option value="30">30</mat-option>
+                <mat-option value="50">50</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+      <div class="col-xl-4 col-lg-4 col-md-8 col-sm-8 col-xs-12 ">
+        <pagination-controls (pageChange)="p = $event" id="table2" responsive="true"></pagination-controls>
+      </div>
+      
+      </div>
+    <div class="col-6 text-center mx-auto"  *ngIf="loading">
+        <div class="col-4 mx-auto">
+          <div class="lds-css ng-scope">
+            <div class="lds-spinner" style="width:100%;height:100%">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <style type="text/css">
+              @keyframes lds-spinner {
+                0% {
+                  opacity: 1;
+                }
+
+                100% {
+                  opacity: 0;
+                }
+              }
+
+              @-webkit-keyframes lds-spinner {
+                0% {
+                  opacity: 1;
+                }
+
+                100% {
+                  opacity: 0;
+                }
+              }
+
+              .lds-spinner {
+                position: relative;
+              }
+
+              .lds-spinner div {
+                top: 45px;
+                position: absolute;
+                -webkit-animation: lds-spinner linear 1.3s infinite;
+                animation: lds-spinner linear 1.3s infinite;
+                background: #fd6a0fea;
+                width: 12px;
+                height: 30px;
+                border-radius: 40%;
+                -webkit-transform-origin: 0px 55px;
+                transform-origin: 0px 55px;
+              }
+
+              .lds-spinner div:nth-child(1) {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+                -webkit-animation-delay: -1.17s;
+                animation-delay: -1.17s;
+              }
+
+              .lds-spinner div:nth-child(2) {
+                -webkit-transform: rotate(36deg);
+                transform: rotate(36deg);
+                -webkit-animation-delay: -1.04s;
+                animation-delay: -1.04s;
+              }
+
+              .lds-spinner div:nth-child(3) {
+                -webkit-transform: rotate(72deg);
+                transform: rotate(72deg);
+                -webkit-animation-delay: -0.91s;
+                animation-delay: -0.91s;
+              }
+
+              .lds-spinner div:nth-child(4) {
+                -webkit-transform: rotate(108deg);
+                transform: rotate(108deg);
+                -webkit-animation-delay: -0.78s;
+                animation-delay: -0.78s;
+              }
+
+              .lds-spinner div:nth-child(5) {
+                -webkit-transform: rotate(144deg);
+                transform: rotate(144deg);
+                -webkit-animation-delay: -0.65s;
+                animation-delay: -0.65s;
+              }
+
+              .lds-spinner div:nth-child(6) {
+                -webkit-transform: rotate(180deg);
+                transform: rotate(180deg);
+                -webkit-animation-delay: -0.52s;
+                animation-delay: -0.52s;
+              }
+
+              .lds-spinner div:nth-child(7) {
+                -webkit-transform: rotate(216deg);
+                transform: rotate(216deg);
+                -webkit-animation-delay: -0.39s;
+                animation-delay: -0.39s;
+              }
+
+              .lds-spinner div:nth-child(8) {
+                -webkit-transform: rotate(252deg);
+                transform: rotate(252deg);
+                -webkit-animation-delay: -0.26s;
+                animation-delay: -0.26s;
+              }
+
+              .lds-spinner div:nth-child(9) {
+                -webkit-transform: rotate(288deg);
+                transform: rotate(288deg);
+                -webkit-animation-delay: -0.13s;
+                animation-delay: -0.13s;
+              }
+
+              .lds-spinner div:nth-child(10) {
+                -webkit-transform: rotate(324deg);
+                transform: rotate(324deg);
+                -webkit-animation-delay: 0s;
+                animation-delay: 0s;
+              }
+
+              .lds-spinner {
+                width: 200px !important;
+                height: 200px !important;
+                -webkit-transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+                transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+              }
+            </style>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

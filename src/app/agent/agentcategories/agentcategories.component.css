@@ -1,0 +1,132 @@
+
+th {
+  font-family: 'Syntax';
+  line-height: 1.5;
+  font-size:18px;
+  font-weight: 550;
+  text-align: inherit;
+  padding:0.75rem;
+  word-wrap: break-word;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+td {
+font-family: 'Charlotte Sans';
+word-spacing: 2px;
+line-clamp: inherit;
+font-size: 17px;
+word-wrap: break-word;
+white-space: nowrap;
+line-height: 1.5;
+text-align: inherit;
+}
+
+button{
+    background-color: orangered;
+    opacity:0.9;
+    color:white;
+    font-size: 16px;
+    font-family: 'Syntax';
+
+  
+  }
+  button:hover{
+    color:white;
+    font-size: 16px;
+    font-family: 'Syntax';
+  
+  }
+  select{
+    width:230px;
+    height:30px;
+    outline:none;
+    font-size: 18px;
+    z-index: 1;
+    padding:2px;
+    font-family: 'Syntax';
+
+  }
+  .poojaprice{
+    font-size: 20px;
+    font-family: "Syntax";
+    opacity:1;
+  }
+
+  .fa-long-arrow-right{
+    font-size:30px;
+  }
+  .clickable{
+    cursor: pointer;
+  }
+
+  .body{
+    overflow-y: hidden; 
+  }
+  mat-tab{
+    overflow-y: hidden;
+   
+  }
+  .mat-labels{
+    font-size: 16px;
+  }
+
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      -webkit-transform: translate3d(0, 100%, 0);
+      transform: translate3d(0, 100%, 0);
+    }
+  
+    to {
+      opacity: 1;
+      -webkit-transform: none;
+      transform: none;
+      transition-delay: 20s;
+    }
+  }
+  
+  @-webkit-keyframes slideInUp {
+    from {
+      opacity: 0;
+      -webkit-transform: translate3d(0, 100%, 0);
+      transform: translate3d(0, 100%, 0);
+    }
+  
+    to {
+      opacity: 1;
+      -webkit-transform: none;
+      transform: none;
+      transition-delay: 20s;
+  
+    }
+  }
+  .card-userDetails{
+    padding:25px;
+    box-shadow: 0 0 0 0 ; 
+    border: 0px solid rgb(179, 18, 18);
+  }
+
+  .namesOrg{
+    font-size: 18px;
+    font-family: "Charlotte Sans";
+    opacity:1;
+  }
+  .names{
+    font-family: "Charlotte Sans";
+    line-height: 1.5;
+    font-size:18px;
+    font-weight: 550;
+    text-align: inherit;
+    opacity: 0.9;
+  }
+.row{
+  padding:6px;
+}
+
+.colorOuterpanel{
+  background-color: #f4f2e498;
+}
+.colorInnerPanel{
+  background-color: rgba(245, 237, 237, 0.342);
+
+}

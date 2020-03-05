@@ -1,0 +1,67 @@
+i {
+ color:white;
+ font-size:20px;
+}
+li{
+  text-decoration: none;
+  font-size: 15px;
+  color:rgb(32, 32, 32);
+  padding: 10px 40px;
+  cursor: pointer;
+  font-family: Lato,sans-serif!important;
+    list-style:none !important;
+    font-weight: 600;
+    letter-spacing: 1px;
+    position: relative;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: show;
+    transition: 0.2s;
+}
+li:hover, .active-link{
+  background: rgba(0, 0, 0, 0.486);
+  text-decoration: none;
+  transition: 0.18s ease-in;
+  padding: 10px 40px;
+  outline-width: 0;
+  font-size: 15px;
+  width:auto;
+  align-content: center;
+  transition: 0.2s;
+  font-family: 'Syntax';
+  color:rgb(255, 255, 255);
+
+}
+.fixed-nav-bar{
+  background: #f3ac42;
+}
+
+.navbar{
+  border-radius: 0px !important;
+  outline: 0 none;
+}
+.bg-dark-menu{
+  background: rgba(0, 0, 0, 0.4);
+}
+.modal-title-menu{
+  color:white;
+  font-weight: 600;
+  font-size:16px;
+}
+.modal-title-menu:hover{
+  color:white;
+  opacity: 1;
+  cursor: pointer;
+}
+.WelcomeName{
+  color:rgb(31, 30, 30);
+}
+.menubutton,.loginbutton{
+  cursor: pointer;
+  font:17px inherit;
+}
+.menubutton:hover,.loginbutton:hover{
+  color:orangered;
+  font-family:17px inherit;
+
+}

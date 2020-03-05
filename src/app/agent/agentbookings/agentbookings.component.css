@@ -1,0 +1,68 @@
+
+th {
+  font-family: 'Syntax';
+  line-height: 1.5;
+  font-size:18px;
+  font-weight: 550;
+  text-align: inherit;
+  padding:0.75rem;
+  word-wrap: break-word;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+td {
+font-family: 'Charlotte Sans';
+word-spacing: 2px;
+line-clamp: inherit;
+font-size: 17px;
+word-wrap: break-word;
+line-height: 1.5;
+text-align: inherit;
+}
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+  font-family: "sans-serif";
+}
+.wrap{
+  width: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "sans-serif";
+}
+.form-control:focus {
+  box-shadow: none;
+  outline:white;
+}
+.form-control-underlined {
+  border-width: 0;
+  border-bottom-width: 1px;
+  border-radius: 0;
+  padding-left: 0;
+  outline-color: black;
+  font-family: "sans-serif";
+}
+.pdf{
+  border-radius: 55%;
+  padding:10px;
+  background-image: linear-gradient(rgba(255, 68, 0, 0.815), rgba(238, 65, 2, 0.664) );
+}
+.fa-close, .fa-plus-square, .fa-check, .fa-star-half-o, .fa-check-circle{
+  font-size:18px;
+}
+.fa-download{
+  font-size: 26px;
+}
+.fa-sort-down:hover, .fa-sort-up:hover{
+  cursor: pointer;
+  opacity: 0.6;
+}
+.fa-sort-down, .fa-sort-up{
+  opacity: 0.6;
+}
+*{
+  font-size:16px;
+}
